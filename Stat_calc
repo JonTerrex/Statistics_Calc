@@ -1,1 +1,38 @@
+def get_numbers():
+    numbers = []
+    while True:
+        try:
+            num = input("Enter a number (or 'done' to finish): ")
+            if num.lower() == "done":
+                break
+            else:
+                num = float(num)
+                numbers.append(num)
+        except ValueError:
+            print("Invalid input. Please enter a number or 'done'.")
+    return numbers
+
+#This function uses a while loop to repeatedly prompt the user to enter a number, and adds each valid input to a list of numbers. The loop continues until the user enters the string "done", at which point the function returns the list of numbers.
+
+numbers = get_numbers()
+print(numbers)
+
+#This code calls the get_numbers() function to prompt the user for input, and stores the resulting list of numbers in the numbers variable. It then prints the list to verify that the input was correctly parsed.
+
+def calculate_mean(numbers):
+    try:
+        total = sum(numbers)
+        mean = total / len(numbers)
+        return mean
+    except ZeroDivisionError:
+        print("Error: cannot calculate mean of an empty list")
+    except TypeError:
+        print("Error: list contains non-numeric values")
+
+
+numbers = get_numbers()
+mean = calculate_mean(numbers)
+if mean is not None:
+    print("Mean:", mean)
+
 
