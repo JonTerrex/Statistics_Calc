@@ -84,3 +84,57 @@ def calculate_standard_error(numbers):
     standard_deviation = variance ** 0.5
     standard_error = standard_deviation / (n ** 0.5)
     return standard_error
+    
+    
+def calculate_variance(numbers):
+    if not numbers:
+        return None
+    n = len(numbers)
+    mean = calculate_mean(numbers)
+    variance = sum([(x - mean) ** 2 for x in numbers]) / n
+    return variance
+
+
+def calculate_stddev(numbers):
+    if not numbers:
+        return None
+    variance = calculate_variance(numbers)
+    if variance is None:
+        return None
+    stddev = variance ** 0.5
+    return stddev
+
+
+def calculate_q1(numbers):
+    if not numbers:
+        return None
+    sorted_numbers = bubble_sort(numbers)
+    n = len(sorted_numbers)
+    q1_index = n // 4
+    if n % 4 == 0:
+        q1 = (sorted_numbers[q1_index-1] + sorted_numbers[q1_index]) / 2
+    else:
+        q1 = sorted_numbers[q1_index]
+    return q1
+
+
+def calculate_q3(numbers):
+    if not numbers:
+        return None
+    sorted_numbers = bubble_sort(numbers)
+    n = len(sorted_numbers)
+    q3_index = 3 * (n // 4)
+    if n % 4 == 0:
+        q3 = (sorted_numbers[q3_index-1] + sorted_numbers[q3_index]) / 2
+    else:
+        q3 = sorted_numbers[q3_index]
+    return q3
+
+
+def calculate_iqr(numbers):
+    if not numbers:
+        return None
+    q1 = calculate_q1(numbers)
+    q3 = calculate_q3(numbers)
+    iqr = q3 - q1
+    return iqr
