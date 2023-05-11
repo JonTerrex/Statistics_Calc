@@ -30,9 +30,57 @@ def calculate_mean(numbers):
         print("Error: list contains non-numeric values")
 
 
-numbers = get_numbers()
-mean = calculate_mean(numbers)
-if mean is not None:
-    print("Mean:", mean)
 
 
+def bubble_sort(numbers):
+    n = len(numbers)
+    for i in range(n):
+        # Perform n-1 comparisons
+        for j in range(n - 1):
+            # Swap adjacent elements if they are in the wrong order
+            if numbers[j] > numbers[j + 1]:
+                numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]
+    return numbers
+
+def calculate_median(numbers):
+    sorted_numbers = bubble_sort(numbers)
+    n = len(sorted_numbers)
+    if n % 2 == 0:
+        # If the list has an even number of elements, average the middle two
+        middle_left = n // 2 - 1
+        middle_right = n // 2
+        median = (sorted_numbers[middle_left] + sorted_numbers[middle_right]) / 2
+    else:
+        # If the list has an odd number of elements, use the middle value
+        middle = n // 2
+        median = sorted_numbers[middle]
+    return median
+
+
+def calculate_min(numbers):
+    if not numbers:
+        return None
+    minimum = numbers[0]
+    for number in numbers:
+        if number < minimum:
+            minimum = number
+    return minimum
+
+def calculate_max(numbers):
+    if not numbers:
+        return None
+    maximum = numbers[0]
+    for number in numbers:
+        if number > maximum:
+            maximum = number
+    return maximum
+
+def calculate_standard_error(numbers):
+    if not numbers:
+        return None
+    n = len(numbers)
+    mean = calculate_mean(numbers)
+    variance = sum([(x - mean) ** 2 for x in numbers]) / n
+    standard_deviation = variance ** 0.5
+    standard_error = standard_deviation / (n ** 0.5)
+    return standard_error
