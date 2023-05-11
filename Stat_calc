@@ -161,3 +161,33 @@ def calculate_percentile(numbers, percentile):
     
     # Return the corresponding percentile value
     return sorted_numbers[index - 1]
+
+def find_outliers(numbers):
+    """
+    Finds outliers in a list of numbers using the interquartile range (IQR) method.
+    
+    Parameters:
+    numbers (list): A list of numbers.
+    
+    Returns:
+    A list of outliers in the list of numbers.
+    """
+    if not numbers:
+        return None
+    
+    # Calculate the interquartile range (IQR)
+    q1 = calculate_first_quartile(numbers)
+    q3 = calculate_third_quartile(numbers)
+    iqr = q3 - q1
+    
+    # Calculate the lower and upper bounds for outliers
+    lower_bound = q1 - 1.5 * iqr
+    upper_bound = q3 + 1.5 * iqr
+    
+    # Find the outliers in the list of numbers
+    outliers = []
+    for number in numbers:
+        if number < lower_bound or number > upper_bound:
+            outliers.append(number)
+    
+    return outliers
