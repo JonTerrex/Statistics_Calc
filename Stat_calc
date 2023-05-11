@@ -138,3 +138,26 @@ def calculate_iqr(numbers):
     q3 = calculate_q3(numbers)
     iqr = q3 - q1
     return iqr
+
+def calculate_percentile(numbers, percentile):
+    """
+    Calculates the percentile value of a list of numbers.
+    
+    Parameters:
+    numbers (list): A list of numbers.
+    percentile (int/float): A value between 0 and 100 representing the desired percentile.
+    
+    Returns:
+    The percentile value of the list of numbers.
+    """
+    if not numbers:
+        return None
+    
+    # Sort the list of numbers
+    sorted_numbers = bubble_sort(numbers)
+    
+    # Calculate the index corresponding to the percentile value
+    index = int((percentile / 100) * len(sorted_numbers))
+    
+    # Return the corresponding percentile value
+    return sorted_numbers[index - 1]
