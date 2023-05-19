@@ -14,15 +14,15 @@ def get_numbers():
 
 #This function uses a while loop to repeatedly prompt the user to enter a number, and adds each valid input to a list of numbers. The loop continues until the user enters the string "done", at which point the function returns the list of numbers.
 
-numbers = get_numbers()
-print(numbers)
+try_list = get_numbers()
+print(try_list)
 
 #This code calls the get_numbers() function to prompt the user for input, and stores the resulting list of numbers in the numbers variable. It then prints the list to verify that the input was correctly parsed.
 
-def calculate_mean(numbers):
+def calculate_mean(number_list):
     try:
-        total = sum(numbers)
-        mean = total / len(numbers)
+        total = sum(number_list)
+        mean = total / len(number_list)
         return mean
     except ZeroDivisionError:
         print("Error: cannot calculate mean of an empty list")
@@ -173,17 +173,19 @@ def find_outliers(numbers):
         return None
     
     # Calculate the interquartile range (IQR)
-    q1 = calculate_first_quartile(numbers)
-    q3 = calculate_third_quartile(numbers)
-    iqr = q3 - q1
-    
+    # q1 = calculate_q1(numbers)
+    # q3 = calculate_q3(numbers)
+    # iqr = q3 - q1
+    iqr = calculate_iqr(numbers)
     # Calculate the lower and upper bounds for outliers
-    lower_bound = q1 - 1.5 * iqr
-    upper_bound = q3 + 1.5 * iqr
+    lower_bound = calculate_q1(numbers) - 1.5 * iqr
+    upper_bound = calculate_q3(numbers) + 1.5 * iqr
     
     # Find the outliers in the list of number
     outliers = []
-    for number in number 
+    for number in numbers:
+        if number>upper_bound or number<lower_bound:
+            outliers.append(number)
     return outliers
     
     
@@ -205,13 +207,13 @@ def print_calc():
         print("Invalid function name!")
         func_name = input("Enter the name of a function to use: ")
     if func_name == "mean":
-        result = mean(nums)
+        result = calculate_mean(nums)
     elif func_name == "median":
-        result = median(nums)
-    elif func_name == "mode":
-        result = mode(nums)
+        result = calculate_median(nums)
+    # elif func_name == "mode":
+    #     result = calculate_mode(nums)
     elif func_name == "variance":
-        result = variance(nums)
+        result = calculate_variance(nums)
     elif func_name == "std_dev":
-        result = std_dev(nums)
+        result = calculate_stddev(nums)
     print("Result:", result)
