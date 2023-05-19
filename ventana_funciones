@@ -1,0 +1,88 @@
+import tkinter as tk
+
+class MainWindow(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.title("Statistical Calculator")
+        
+        self.btn_get_numbers = tk.Button(self, text="Get Numbers", command=self.open_get_numbers_window)
+        self.btn_get_numbers.pack(pady=10)
+        
+        self.btn_calculate_mean = tk.Button(self, text="Calculate Mean", command=self.calculate_mean)
+        self.btn_calculate_mean.pack(pady=10)
+        
+        self.btn_bubble_sort = tk.Button(self, text="Bubble Sort", command=self.bubble_sort)
+        self.btn_bubble_sort.pack(pady=10)
+        
+        self.btn_calculate_median = tk.Button(self, text="Calculate Median", command=self.calculate_median)
+        self.btn_calculate_median.pack(pady=10)
+        
+        self.btn_calculate_min = tk.Button(self, text="Calculate Min", command=self.calculate_min)
+        self.btn_calculate_min.pack(pady=10)
+        
+        self.btn_calculate_max = tk.Button(self, text="Calculate Max", command=self.calculate_max)
+        self.btn_calculate_max.pack(pady=10)
+        
+        self.btn_calculate_standard_error = tk.Button(self, text="Calculate Standard Error", command=self.calculate_standard_error)
+        self.btn_calculate_standard_error.pack(pady=10)
+        
+        self.btn_calculate_variance = tk.Button(self, text="Calculate Variance", command=self.calculate_variance)
+        self.btn_calculate_variance.pack(pady=10)
+        
+        # Add more buttons for additional functions
+        
+    def open_get_numbers_window(self):
+        GetNumbersWindow()
+        
+    def calculate_mean(self):
+        # Implement the logic for calculating mean
+        pass
+    
+    def bubble_sort(self):
+        # Implement the logic for bubble sort
+        pass
+    
+    def calculate_median(self):
+        # Implement the logic for calculating median
+        pass
+    
+    def calculate_min(self):
+        # Implement the logic for calculating minimum
+        pass
+    
+    def calculate_max(self):
+        # Implement the logic for calculating maximum
+        pass
+    
+    def calculate_standard_error(self):
+        # Implement the logic for calculating standard error
+        pass
+    
+    def calculate_variance(self):
+        # Implement the logic for calculating variance
+        pass
+
+class GetNumbersWindow(tk.Toplevel):
+    def __init__(self):
+        super().__init__()
+        self.title("Get Numbers")
+        
+        # Add the necessary GUI components to get numbers from the user
+        
+        # Example:
+        self.lbl_instruction = tk.Label(self, text="Enter numbers:")
+        self.lbl_instruction.pack(pady=10)
+        
+        self.entry_numbers = tk.Entry(self)
+        self.entry_numbers.pack(pady=5)
+        
+        self.btn_submit = tk.Button(self, text="Submit", command=self.get_numbers)
+        self.btn_submit.pack(pady=10)
+        
+    def get_numbers(self):
+        # Implement the logic to get numbers from the entry field
+        pass
+
+if __name__ == "__main__":
+    mainWindow = MainWindow()
+    mainWindow.mainloop()
