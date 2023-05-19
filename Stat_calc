@@ -31,6 +31,7 @@ def calculate_mean(number_list):
 
 def bubble_sort(numbers):
     n = len(numbers)
+    #i is used to count how many comparison are made.
     for i in range(n):
         # Perform n-1 comparisons
         for j in range(n - 1):
